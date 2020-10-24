@@ -1,19 +1,13 @@
 #include <Arduino.h>
-#include "DigiKeyboard.h"
+#include "TrinketHidCombo.h"
 #include <RotaryEncoder.h>
 
 // Use in 0 & 2 for rotary encoder on Digispark, otherwise the rotary wont't detect correctly
 RotaryEncoder encoder(0, 2);
 
-bool first = true;
-
 void setup()
 {
-  // Send empty KetStroke and wait 2 seconds. Why?
-  // On the first time sending key stroke, macbook sends adds an fn.
-  // eg. send KEY_F12, the input is FN + KEY_F12
-  DigiKeyboard.sendKeyStroke(0);
-  delay(2000);
+  TrinketHidCombo.begin();
 }
 
 void loop()
@@ -26,11 +20,12 @@ void loop()
   {
     if (newPos > pos)
     {
-      DigiKeyboard.sendKeyStroke(KEY_F12);
+      // DigiKeyboard.sendKeyStroke(KEY_VOLUME_UP);
+      TrinketHidCombo.pressMultimediaKey(MMKEY_VOL_UP);
     }
     else
     {
-      DigiKeyboard.sendKeyStroke(KEY_F11);
+      TrinketHidCombo.pressMultimediaKey(MMKEY_VOL_DOWN);
     }
 
     pos = newPos;
