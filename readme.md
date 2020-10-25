@@ -5,6 +5,23 @@
 -  Rotary Encoder ; e.g [WayinTop KY-040](https://www.amazon.de/gp/product/B07T3672VK/)
 
 
+## Wiring
+Digispark| Rotary Encoder
+-|-
+P0|CLK OR DT
+P1|SW
+P2|DT OR CLK
+
+My rotary encoder has an active low switch which is pulled up by an 10k ohm resistor.
+Together with the build in led (connected also to pin 1) the Digispark detect always a low, doesn't matter the switch is pressed or not.
+
+Here are two solutions:
+- Replace the 10k ohm pull up switch resistor with a 1.5k ohm resistor on rotary encoder
+- Desolder build in led on the digispark
+
+<img src="https://raw.githubusercontent.com/fixItFab/DialTeil/master/assets/readme/rotary-encoder-pull-up.jpg" width="250" />
+
+
 ## Recommended Software
 - VS-Code + Platformio Extension
 
